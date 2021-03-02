@@ -27,9 +27,9 @@ static const char *colors[][3]      = {
 };
 
 /* pulseaudio controls */
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "3", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "3", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "3", "toggle",  NULL };
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "2", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "2", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "2", "toggle",  NULL };
 
 /* betterlockscreen */
 static const char *lockscr[] = { "/usr/bin/betterlockscreen", "-l", NULL, NULL, NULL };
@@ -76,6 +76,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *jgmenucmd[] = { "jgmenu_run", NULL, NULL, NULL, NULL  };
 static const char *termcmd[]  = { "st", NULL };
 
 #include "shiftview.c"
@@ -85,7 +86,7 @@ static Key keys[] = {
 	{ MODKEY,               	XK_F11,    spawn,	   {.v = downvol } },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
 	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = jgmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_l,      spawn, 	   {.v = lockscr } },
 	// { MODKEY,                       XK_b,      togglebar,      {0} },
