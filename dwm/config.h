@@ -20,16 +20,17 @@ static const char col_red1[]	    = "#bf0003";
 static const char col_blue1[]	    = "#000b8e";
 static const char col_blue2[]	    = "#0b0349";
 static const char col_blue3[]	    = "#222a4e";
+static const char col_blue4[]	    = "#2b293f";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_blue3,  col_blue3  },
+	[SchemeSel]  = { col_gray4, col_blue4,  col_blue4  },
 };
 
 /* pulseaudio controls */
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "2", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "2", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "2", "toggle",  NULL };
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "alsa_output.pci-0000_2f_00.4.analog-stereo", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "alsa_output.pci-0000_2f_00.4.analog-stereo", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "alsa_output.pci-0000_2f_00.4.analog-stereo", "toggle",  NULL };
 
 /* betterlockscreen */
 static const char *lockscr[] = { "/usr/bin/betterlockscreen", "-l", NULL, NULL, NULL };
