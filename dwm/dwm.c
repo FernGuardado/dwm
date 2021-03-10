@@ -972,8 +972,9 @@ void
 incnmaster(const Arg *arg)
 {
 	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
-	arrange(selmon);
+	arrange(selmon); 
 }
+
 
 #ifdef XINERAMA
 static int

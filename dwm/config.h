@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 5;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 /* static const unsigned int gappx     = 1; */       /* gap pixel between windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -46,21 +46,26 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* { "VirtualBox", NULL,	  NULL,       0,            1,           -1 }, */
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
+static const float mfact     = 0.48; /* factor of master area size [0.05..0.95] */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int nmaster = 1;  /* default number of clients in the master area */
 
+/* #include "nmaster-ncol.c" */
 #include "grid.c"
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },/* first entry is default */
+	{ "><>",      NULL }, /* no layout function means floating behavior */        
+	/* { "-|=",      ntile }, */      
 	{ "[M]",      monocle },
-	{ "HHH",      grid },
- 	{ "|||",      col },
+	{ "HHH",      grid }, 
+ 	{ "|||",      col },  
+	/* { "-|-",      nbstack }, */
 };
 
 /* key definitions */
@@ -119,7 +124,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	TAGKEYS(                        XK_1,                      0)
+	/* { MODKEY,                       XK_a,      incnmaster,     {.i = +1 } }, */
+	/* { MODKEY,                       XK_z,      incnmaster,     {.i = -1 } }, */
+	/* { MODKEY,                       XK_x,      setnmaster,     {.i = 2 } },  */
+	/* { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0] } }, */
+	/* { MODKEY,                       XK_b,      setlayout,      {.v = &layouts[1] } }, */
+	TAGKEYS(                        XK_1,                      0)  
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
