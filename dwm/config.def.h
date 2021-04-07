@@ -3,9 +3,9 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-/* static const unsigned int gappx     = 1; */       /* gap pixel between windows */
-static const unsigned int gappx     = 10;        /* gaps between windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int gappx = 18;           /* gap pixel between windows */
+/* static const unsigned int gappx     = 15; */ /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -21,10 +21,11 @@ static const char col_blue1[]	    = "#000b8e";
 static const char col_blue2[]	    = "#0b0349";
 static const char col_blue3[]	    = "#222a4e";
 static const char col_blue4[]	    = "#2b293f";
+static const char col_blue5[]       = "#13121d";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_blue4,  col_blue4  },
+	[SchemeSel]  = { col_gray3, col_blue4,  col_blue5  },
 };
 
 /* pulseaudio controls */
@@ -45,7 +46,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },         
 	/* { "VirtualBox", NULL,	  NULL,       0,            1,           -1 }, */
 };
 
