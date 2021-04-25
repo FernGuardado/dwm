@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 6;        /* border pixel of windows */
 static const unsigned int gappx = 18;           /* gap pixel between windows */
 /* static const unsigned int gappx     = 15; */ /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -22,10 +22,12 @@ static const char col_blue2[]	    = "#0b0349";
 static const char col_blue3[]	    = "#222a4e";
 static const char col_blue4[]	    = "#2b293f";
 static const char col_blue5[]       = "#13121d";
+static const char col_blue6[]       = "#2e2b45";
+static const char col_blue7[]       = "#373552";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray3, col_blue4,  col_blue5  },
+	[SchemeNorm] = { col_gray3, col_blue4, col_blue6 },
+	[SchemeSel]  = { col_gray3, col_blue5,  col_blue5  },
 };
 
 /* pulseaudio controls */
@@ -90,9 +92,13 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,               	XK_F11,    spawn,	   {.v = downvol } },
-	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
-	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
+	// { MODKEY,               	XK_F11,    spawn,	   {.v = downvol } },
+	// { MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
+	// { MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
+	{ MODKEY,			XK_F11,	      spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,		XK_F11,	      spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,			XK_F12,	      spawn,		SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,		XK_F12,	      spawn,		SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = jgmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_l,      spawn, 	   {.v = lockscr } },
