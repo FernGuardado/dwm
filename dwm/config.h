@@ -9,7 +9,7 @@ static const unsigned int gappx = 18;           /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=15", "Hack Nerd Font:style=Regular" };
+static const char *fonts[]          = { "Hack Nerd Font:style=Regular:size=13", "Hack Nerd Font:style=Regular" };
 static const char dmenufont[]       = "monospace:size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
