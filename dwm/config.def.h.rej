@@ -1,10 +1,10 @@
---- config.def.h	2012-08-25 12:34:20.847202795 -0400
-+++ config.def.h	2012-08-25 11:58:15.210591031 -0400
-@@ -32,6 +32,7 @@ static const Layout layouts[] = {
- 	{ "[]=",      tile },    /* first entry is default */
- 	{ "><>",      NULL },    /* no layout function means floating behavior */
- 	{ "[M]",      monocle },
-+	{ "|||",      col },
- };
- 
- /* key definitions */
+--- config.def.h
++++ config.def.h
+@@ -78,6 +78,7 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+ 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+ 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
++	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
+ 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+ 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+ 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

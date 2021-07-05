@@ -39,7 +39,7 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "alsa_outp
 static const char *lockscr[] = { "/usr/bin/betterlockscreen", "-l", NULL, NULL, NULL };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "","", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,7 +86,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-l", "20", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *jgmenucmd[] = { "jgmenu_run", NULL, NULL, NULL, NULL  };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "shiftview.c"
 
@@ -99,6 +99,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_F11,	      spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_F12,	      spawn,		SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,		XK_F12,	      spawn,		SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,			XK_F10,	      spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = jgmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_l,      spawn, 	   {.v = lockscr } },
@@ -118,6 +119,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	// { MODKEY,			XK_n,      shiftview,	   { .i = +1 } },
 	// { MODKEY,		        XK_b,	   shiftview,	   { .i = -1 } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -131,6 +133,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("/home/fern/.config/rofi/powermenu/powermenu.sh") },
 	/* { MODKEY,                       XK_a,      incnmaster,     {.i = +1 } }, */
 	/* { MODKEY,                       XK_z,      incnmaster,     {.i = -1 } }, */
 	/* { MODKEY,                       XK_x,      setnmaster,     {.i = 2 } },  */
@@ -145,7 +148,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* { MODKEY|ShiftMask,             XK_q,      quit,           {0} }, */
 };
 
 /* button definitions */
